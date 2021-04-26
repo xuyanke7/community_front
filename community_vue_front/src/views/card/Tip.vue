@@ -5,30 +5,35 @@
     </div>
     <div>
       <div class="has-text-left block">
-        <span> 所谓回忆者，虽说可以使人欢欣，有时又不免使人寂寞，使精神的丝缕还牵着已逝的寂寞的时光，又有什么意味呢。 </span>
+        {{ tip.content }}
       </div>
-      <div class="has-text-right block">
-        <span> ---鲁迅 </span>
+      <div class="has-text-right mt-5 block">
+        ——{{ tip.author }}
       </div>
     </div>
   </el-card>
 </template>
 
 <script>
-
+import {getTodayTip} from '@/api/tip'
 
 export default {
   name: 'Tip',
   data() {
     return {
-      
+      tip: {}
     }
   },
   created() {
-    
+    this.fetchTodayTip()
   },
   methods: {
-    
+    fetchTodayTip() {
+      getTodayTip().then(response => {
+        const { data } = response
+        this.tip = data
+      })
+    }
   }
 }
 </script>

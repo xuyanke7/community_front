@@ -1,39 +1,21 @@
 <template>
   <el-card class="box-card" shadow="never">
     <div slot="header">
-      <span>🥂 推广</span>
+      <span>🥳 推广</span>
     </div>
-    <div>
-      <p v-for="(item, index) in list" :key="index" class="block">
-        <a :href="item.link" target="_blank">{{ item.title }}</a>
-      </p>
-    </div>
+    <div>推广链接</div>
   </el-card>
 </template>
 
 <script>
-import { getList } from '@/api/promote'
-
 export default {
-  name: 'Promotion',
+  name: "Promotion",
   data() {
-    return {
-      list: []
-    }
+    return {};
   },
-  created() {
-    this.fetchList()
-  },
-  methods: {
-    fetchList() {
-      getList().then((response) => {
-        const { data } = response
-        this.list = data
-      })
-    }
-  }
-}
+  created() {},
+  methods: {},
+};
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

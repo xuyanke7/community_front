@@ -6,8 +6,7 @@
         <TopicList></TopicList>
       </div>
       <div class="column">
-        <CardBar>
-        </CardBar>
+        <CardBar> </CardBar>
       </div>
     </div>
   </div>
@@ -15,13 +14,13 @@
 
 <script>
 // @ is an alias to /src
-import getBillboard from "@/api/billboard";
+import {getBillboard } from "@/api/billboard";
 import TopicList from "@/views/post/TopicList";
 import CardBar from "@/views/card/CardBar";
 
 export default {
-  components: { TopicList, CardBar },
   name: "Home",
+  components: {CardBar, TopicList},
   data() {
     return {
       billboard: {
@@ -34,7 +33,7 @@ export default {
   },
   methods: {
     async fetchBillboard() {
-      getBillboard.then((value) => {
+      getBillboard().then((value) => {
         const { data } = value;
         this.billboard = data;
       });
