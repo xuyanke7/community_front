@@ -3,18 +3,35 @@
     <div slot="header">
       <span>🥳 推广</span>
     </div>
-    <div>推广链接</div>
+    <div>
+       <p v-for="(item, index) in list" :key="index" class="block">
+        <a :href="item.link" target="_blank">{{ item.title }}</a>
+      </p>
+    </div>
   </el-card>
 </template>
 
 <script>
+import { getPromotion } from "@/api/promotion";
+
 export default {
   name: "Promotion",
   data() {
-    return {};
+    return {
+      list: [],
+    };
   },
-  created() {},
-  methods: {},
+  created() {
+    this.fetchPromotion();
+  },
+  methods: {
+    fetchPromotion() {
+      getPromotion().then((responce) => {
+        const { data } = responce;
+        this.list = data;
+      });
+    },
+  },
 };
 </script>
 
