@@ -1,5 +1,5 @@
-import { getUserInfo, login, logout } from "@/api/auth/auth";
-import { getToken, setToken, removeToken } from "@/utils/auth";
+import { userLogin } from "@/api/auth/auth";
+import { getToken, setToken } from "@/utils/auth";
 
 const state = {
   token: getToken(), // token
@@ -10,9 +10,9 @@ const mutations = {
   SET_TOKEN_STATE: (state, token) => {
     state.token = token;
   },
-  SET_USER_STATE: (state, user) => {
+  /* SET_USER_STATE: (state, user) => {
     state.user = user;
-  },
+  }, */
 };
 
 const actions = {
@@ -21,7 +21,7 @@ const actions = {
     console.log(userInfo);
     const { name, pass, rememberMe } = userInfo;
     return new Promise((resolve, reject) => {
-      login({ username: name.trim(), password: pass, rememberMe: rememberMe })
+      userLogin({ username: name.trim(), password: pass, rememberMe: rememberMe })
         .then((response) => {
           const { data } = response;
           commit("SET_TOKEN_STATE", data.token);
@@ -34,7 +34,7 @@ const actions = {
     });
   },
   // 获取用户信息
-  getInfo({ commit }) {
+  /* getInfo({ commit }) {
     return new Promise((resolve, reject) => {
       getUserInfo()
         .then((response) => {
@@ -69,7 +69,7 @@ const actions = {
           reject(error);
         });
     });
-  },
+  }, */
 };
 
 export default {

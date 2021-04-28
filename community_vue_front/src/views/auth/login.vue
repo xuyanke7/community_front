@@ -80,6 +80,7 @@ export default {
   },
   methods: {
     submitForm(formName) {
+      console.log("adfdsfsf")
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.loading = true;

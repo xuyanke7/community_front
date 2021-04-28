@@ -8,9 +8,9 @@ export function getToken() {
   return Cookies.get(uToken);
 }
 
-// 设置Token，1天,与后端同步
+// 设置Token，365天,与后端同步
 export function setToken(token) {
-  return Cookies.set(uToken, token, { expires: 1 });
+  return Cookies.set(uToken, token, { expires: 365 });
 }
 
 // 删除Token
